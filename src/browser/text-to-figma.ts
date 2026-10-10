@@ -128,7 +128,6 @@ export const textToFigma = (node: Element, { fromTextInput = false } = {}) => {
         textNode.fontSize = Math.round(fontSize.value);
     }
     if (computedStyles.fontFamily) {
-        // const font = computedStyles.fontFamily.split(/\s*,\s*/);
         textNode.fontFamily = computedStyles.fontFamily;
     }
 

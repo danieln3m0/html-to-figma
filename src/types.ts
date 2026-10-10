@@ -18,20 +18,6 @@ export type WithRef<T> = T & {
     ref?: SceneNode 
 };
 
-// export interface Layer {
-//     ref: Element,
-//     x: number,
-//     y: number,
-//     width: number,
-//     height: number,
-//     fills: 
-//     clipsContent: !!overflowHidden,
-//     fills: fills as any,
-//     children: [],
-//     opacity: getOpacity(computedStyle),
-//     zIndex: Number(computedStyle.zIndex),
-// }
-
 export type LayerNode = Partial<RectangleNode | TextNode | FrameNode | SvgNode | GroupNode | ComponentNode>;
 
 export type PlainLayerNode = Partial<LayerNode> & {

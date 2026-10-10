@@ -42,22 +42,6 @@ export function getBoundingClientRect(
     if (pseudo) {
         return getBoundingClientRectPseudo(el, pseudo, computed);
     }
-    // if (display && display.includes('inline') && el.children.length) {
-    //     const elRect = el.getBoundingClientRect();
-    //     const aggregateRect = getAggregateRectOfElements(
-    //         Array.from(el.children)
-    //     )!;
-
-    //     if (elRect.width > aggregateRect.width) {
-    //         return {
-    //             ...aggregateRect,
-    //             width: elRect.width,
-    //             left: elRect.left,
-    //             right: elRect.right,
-    //         };
-    //     }
-    //     return aggregateRect;
-    // }
 
     return el.getBoundingClientRect();
 }
@@ -284,8 +268,6 @@ const convertToSvg = (value: string, layer: LayerNode) => {
     }
 };
 
-// TODO: CACHE!
-// const imageCache: { [key: string]: Uint8Array | undefined } = {};
 export async function processImages(layer: LayerNode) {
     const images = getImageFills(layer as RectangleNode);
 
