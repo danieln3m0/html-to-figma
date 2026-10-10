@@ -14,11 +14,19 @@ import { textToFigma } from './text-to-figma';
 import { getBorder, getBorderPin } from './border';
 import { addConstraintToLayer } from './add-constraints';
 
+interface ElementToFigmaOptions {
+    isRoot?: boolean;
+    nameLayer?: (el: Element) => string | void;
+}
+
 export const elementToFigma = (
     el: Element,
     pseudo?: string,
-    isRoot?: boolean
+    options: ElementToFigmaOptions = {}
 ): MetaLayerNode | undefined => {
+    const { isRoot, nameLayer } = options;
+    const pickName = (elem: Element) =>
+        (nameLayer && nameLayer(elem)) || getLayerName(elem);
     if (el.nodeType === Node.TEXT_NODE) {
         return textToFigma(el);
     }
@@ -71,7 +79,7 @@ export const elementToFigma = (
         return {
             type: 'SVG',
             ref: el,
-            name: getLayerName(el),
+            name: pickName(el),
             // add FILL to SVG to get right color in figma
             svg: replaceSvgFill(svgEl.outerHTML, fill),
             x: Math.round(rect.left),
@@ -107,7 +115,7 @@ export const elementToFigma = (
     const rectNode = {
         type: 'FRAME',
         ref: el,
-        name: getLayerName(el),
+        name: pickName(el),
         x: Math.round(rect.left),
         y: Math.round(rect.top),
         width: Math.round(rect.width),

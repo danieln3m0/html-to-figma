@@ -1055,6 +1055,158 @@ exports[`Convert to figma opacity 1`] = `
 }
 `;
 
+exports[`Convert to figma options: exclude and nameLayer 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "characters": "KEPT",
+          "constraints": {
+            "horizontal": "SCALE",
+            "vertical": "MIN",
+          },
+          "data": {
+            "heightType": "fixed",
+            "widthType": "fixed",
+          },
+          "fills": [
+            {
+              "blendMode": "NORMAL",
+              "color": {
+                "b": 0,
+                "g": 0,
+                "r": 0,
+              },
+              "opacity": 1,
+              "type": "SOLID",
+              "visible": true,
+            },
+          ],
+          "fontFamily": ""Noto Sans", sans-serif",
+          "fontSize": 16,
+          "height": 22,
+          "lineHeight": {
+            "unit": "PIXELS",
+            "value": 19,
+          },
+          "type": "TEXT",
+          "width": 37,
+          "x": 0,
+          "y": 0,
+        },
+      ],
+      "clipsContent": false,
+      "constraints": {
+        "horizontal": "SCALE",
+        "vertical": "MIN",
+      },
+      "data": {
+        "heightType": "fixed",
+        "widthType": "fixed",
+      },
+      "fills": [
+        {
+          "color": {
+            "b": 0.8666666666666667,
+            "g": 0.8666666666666667,
+            "r": 0.8666666666666667,
+          },
+          "opacity": 1,
+          "type": "SOLID",
+        },
+      ],
+      "height": 40,
+      "name": "CustomName",
+      "opacity": 1,
+      "type": "FRAME",
+      "width": 120,
+      "x": 12,
+      "y": 12,
+    },
+    {
+      "children": [
+        {
+          "characters": "PLAIN",
+          "constraints": {
+            "horizontal": "SCALE",
+            "vertical": "MIN",
+          },
+          "data": {
+            "heightType": "fixed",
+            "widthType": "fixed",
+          },
+          "fills": [
+            {
+              "blendMode": "NORMAL",
+              "color": {
+                "b": 0,
+                "g": 0,
+                "r": 0,
+              },
+              "opacity": 1,
+              "type": "SOLID",
+              "visible": true,
+            },
+          ],
+          "fontFamily": ""Noto Sans", sans-serif",
+          "fontSize": 16,
+          "height": 22,
+          "lineHeight": {
+            "unit": "PIXELS",
+            "value": 19,
+          },
+          "type": "TEXT",
+          "width": 46,
+          "x": 0,
+          "y": 0,
+        },
+      ],
+      "clipsContent": false,
+      "constraints": {
+        "horizontal": "SCALE",
+        "vertical": "MIN",
+      },
+      "data": {
+        "heightType": "fixed",
+        "widthType": "fixed",
+      },
+      "fills": [
+        {
+          "color": {
+            "b": 0.8666666666666667,
+            "g": 0.8666666666666667,
+            "r": 0.8666666666666667,
+          },
+          "opacity": 1,
+          "type": "SOLID",
+        },
+      ],
+      "height": 40,
+      "name": "div.box",
+      "opacity": 1,
+      "type": "FRAME",
+      "width": 120,
+      "x": 12,
+      "y": 100,
+    },
+  ],
+  "clipsContent": false,
+  "constraints": {
+    "horizontal": "SCALE",
+    "vertical": "MIN",
+  },
+  "fills": [],
+  "height": 152,
+  "name": "div#container",
+  "opacity": 1,
+  "type": "FRAME",
+  "width": 784,
+  "x": 8,
+  "y": 8,
+}
+`;
+
 exports[`Convert to figma shadows 1`] = `
 {
   "children": [
