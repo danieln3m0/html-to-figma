@@ -21,7 +21,7 @@ function getParent(layer: LayerNode, root: WithRef<FrameNode>) {
         if (err === 'DONE') {
             // Do nothing
         } else {
-            console.error(err.message);
+            console.error((err as Error).message);
         }
     }
     return response;
