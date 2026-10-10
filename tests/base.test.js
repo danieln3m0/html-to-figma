@@ -36,6 +36,10 @@ describe('Convert to figma', () => {
         expect(await htmlToFigma('zero-height-parent')).toMatchSnapshot();
     });
 
+    it('text styles: weight, italics, decoration, alignment', async () => {
+        expect(await htmlToFigma('text-styles')).toMatchSnapshot();
+    });
+
     it('svg <use> is expanded without mutating the page', async () => {
         expect(await htmlToFigma('svg-use')).toMatchSnapshot();
 

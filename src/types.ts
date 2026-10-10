@@ -21,7 +21,9 @@ export type WithRef<T> = T & {
 export type LayerNode = Partial<RectangleNode | TextNode | FrameNode | SvgNode | GroupNode | ComponentNode>;
 
 export type PlainLayerNode = Partial<LayerNode> & {
-    fontFamily?: string
+    fontFamily?: string;
+    fontWeight?: number;
+    fontStyle?: string;
 };
 
 export type MetaLayerNode = WithMeta<LayerNode>;
@@ -31,6 +33,8 @@ export type WithMeta<T> = Partial<Omit<T, 'children'>> & {
     ref?: SceneNode | Element | HTMLElement,
     zIndex?: number;
     fontFamily?: string;
+    fontWeight?: number;
+    fontStyle?: string;
     textValue?: WithMeta<TextNode>;
     before?: WithMeta<T>;
     after?: WithMeta<T>;

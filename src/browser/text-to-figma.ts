@@ -131,24 +131,42 @@ export const textToFigma = (node: Element, { fromTextInput = false } = {}) => {
         textNode.fontFamily = computedStyles.fontFamily;
     }
 
-    if (computedStyles.textDecoration) {
-        if (
-            computedStyles.textDecoration === 'underline' ||
-            computedStyles.textDecoration === 'strikethrough'
-        ) {
-            textNode.textDecoration =
-                computedStyles.textDecoration.toUpperCase() as any;
-        }
+    const fontWeight = parseInt(computedStyles.fontWeight, 10);
+    if (fontWeight && fontWeight !== 400) {
+        textNode.fontWeight = fontWeight;
     }
-    if (computedStyles.textAlign) {
-        if (
-            ['left', 'center', 'right', 'justified'].includes(
-                computedStyles.textAlign
-            )
-        ) {
-            textNode.textAlignHorizontal =
-                computedStyles.textAlign.toUpperCase() as any;
-        }
+    const { fontStyle } = computedStyles;
+    if (fontStyle === 'italic' || fontStyle.startsWith('oblique')) {
+        textNode.fontStyle = 'italic';
+    }
+
+    // textDecoration is a shorthand ("underline solid rgb(0, 0, 0)");
+    // only textDecorationLine carries the line value
+    const textDecorationLine =
+        computedStyles.textDecorationLine ||
+        (computedStyles.textDecoration || '').split(' ')[0];
+    if (textDecorationLine === 'underline') {
+        textNode.textDecoration = 'UNDERLINE';
+    } else if (textDecorationLine === 'line-through') {
+        textNode.textDecoration = 'STRIKETHROUGH';
+    }
+
+    const rtl = computedStyles.direction === 'rtl';
+    const alignMap: {
+        [align: string]: 'LEFT' | 'RIGHT' | 'CENTER' | 'JUSTIFIED' | undefined;
+    } = {
+        left: 'LEFT',
+        right: 'RIGHT',
+        center: 'CENTER',
+        justify: 'JUSTIFIED',
+        // start/end resolve against direction; skip when they resolve to
+        // LEFT, which is Figma's default for new text nodes
+        start: rtl ? 'RIGHT' : undefined,
+        end: rtl ? undefined : 'RIGHT',
+    };
+    const mappedAlign = alignMap[computedStyles.textAlign];
+    if (mappedAlign) {
+        textNode.textAlignHorizontal = mappedAlign;
     }
 
     return textNode;
