@@ -28,6 +28,10 @@ describe('Convert to figma', () => {
         expect(await htmlToFigma('shadows')).toMatchSnapshot();
     });
 
+    it('borders', async () => {
+        expect(await htmlToFigma('borders')).toMatchSnapshot();
+    });
+
     it('opacity', async () => {
         expect(await htmlToFigma('opacity')).toMatchSnapshot();
     });

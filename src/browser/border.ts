@@ -67,11 +67,13 @@ export const getBorderPin = (
                             : dir === 'right'
                             ? rect.right - width
                             : rect.left,
+                    // CSS borders render inside the border-box
+                    // (getBoundingClientRect already includes them)
                     y:
                         dir === 'top'
-                            ? rect.top - height
+                            ? rect.top
                             : dir === 'bottom'
-                            ? rect.bottom
+                            ? rect.bottom - height
                             : rect.top,
                     width,
                     height,
