@@ -684,6 +684,44 @@ exports[`Convert to figma shadows 1`] = `
       "x": 50,
       "y": 0,
     },
+    {
+      "children": [],
+      "clipsContent": false,
+      "constraints": {
+        "horizontal": "SCALE",
+        "vertical": "MIN",
+      },
+      "data": {
+        "heightType": "fixed",
+        "widthType": "fixed",
+      },
+      "effects": [
+        {
+          "blendMode": "NORMAL",
+          "color": {
+            "a": 0.25,
+            "b": 0,
+            "g": 0,
+            "r": 0,
+          },
+          "offset": {
+            "x": 0,
+            "y": 2,
+          },
+          "radius": 4,
+          "spread": 0,
+          "type": "INNER_SHADOW",
+          "visible": true,
+        },
+      ],
+      "fills": [],
+      "height": 100,
+      "opacity": 1,
+      "type": "FRAME",
+      "width": 100,
+      "x": 50,
+      "y": 150,
+    },
   ],
   "clipsContent": false,
   "constraints": {
@@ -691,7 +729,7 @@ exports[`Convert to figma shadows 1`] = `
     "vertical": "MIN",
   },
   "fills": [],
-  "height": 100,
+  "height": 250,
   "opacity": 1,
   "type": "FRAME",
   "width": 784,
