@@ -34,7 +34,7 @@ export type WithMeta<T> = Partial<Omit<T, 'children'>> & {
     textValue?: WithMeta<TextNode>;
     before?: WithMeta<T>;
     after?: WithMeta<T>;
-    borders?: WithMeta<T>;
+    borders?: WithMeta<LayerNode>[];
     children?: WithMeta<T>[];
     constraints?: FrameNode['constraints'];
     clipsContent?: FrameNode['clipsContent'];

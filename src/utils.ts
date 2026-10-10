@@ -46,8 +46,10 @@ export async function traverseAsync<T>(
     if (layer) {
         await cb(layer, parent);
         if (hasChildren(layer)) {
+            // iterate a copy: reversing in place would mutate the caller's
+            // tree and flip the order on every invocation
             // @ts-ignore
-            for (let child of layer.children.reverse()) {
+            for (const child of [...layer.children].reverse()) {
                 await traverseAsync(child as T, cb, layer)
             }
         }
