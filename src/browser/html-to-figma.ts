@@ -130,22 +130,6 @@ export function htmlToFigma(
         throw Error(`Element not found`);
     }
 
-    // Process SVG <use> elements
-    for (const use of Array.from(
-        el.querySelectorAll('use')
-    ) as SVGUseElement[]) {
-        try {
-            const symbolSelector = use.href.baseVal;
-            const symbol: SVGSymbolElement | null =
-                context.document.querySelector(symbolSelector);
-            if (symbol) {
-                use.outerHTML = symbol.innerHTML;
-            }
-        } catch (err) {
-            console.warn('Error querying <use> tag href', err);
-        }
-    }
-
     const data = mapDOM(el);
 
     return data ? data : [];

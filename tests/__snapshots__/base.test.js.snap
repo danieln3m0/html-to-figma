@@ -700,6 +700,39 @@ exports[`Convert to figma shadows 1`] = `
 }
 `;
 
+exports[`Convert to figma svg <use> is expanded without mutating the page 1`] = `
+{
+  "children": [
+    {
+      "constraints": {
+        "horizontal": "CENTER",
+        "vertical": "MIN",
+      },
+      "height": 48,
+      "svg": "<svg class="icon"fill="rgb(204, 0, 0)">>
+                <path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"></path>
+            </svg>",
+      "type": "SVG",
+      "width": 48,
+      "x": 10,
+      "y": 10,
+    },
+  ],
+  "clipsContent": false,
+  "constraints": {
+    "horizontal": "SCALE",
+    "vertical": "MIN",
+  },
+  "fills": [],
+  "height": 68,
+  "opacity": 1,
+  "type": "FRAME",
+  "width": 784,
+  "x": 8,
+  "y": 8,
+}
+`;
+
 exports[`Convert to figma zero height parent with visible overflow keeps its children 1`] = `
 {
   "children": [
