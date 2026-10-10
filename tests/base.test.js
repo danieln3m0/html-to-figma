@@ -5,6 +5,8 @@ describe('Convert to figma', () => {
         htmlToFigma = async (name) => {
             await page.goto(`http://localhost:3000/stubs/${name}.html`);
             await page.addScriptTag({ url: '../index.js' });
+            // Wait for the local test font so text metrics are deterministic
+            await page.evaluate(() => document.fonts.ready);
 
             return page.$eval(`#container`, (el) => window.__htmlToFigma(el));
         }

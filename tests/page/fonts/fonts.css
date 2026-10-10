@@ -1,0 +1,25 @@
+/* Local OFL font so text metrics in snapshots do not depend on OS fonts. */
+@font-face {
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: url('/fonts/noto-sans-latin-400-normal.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 700;
+    src: url('/fonts/noto-sans-latin-700-normal.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'Noto Sans';
+    font-style: italic;
+    font-weight: 400;
+    src: url('/fonts/noto-sans-latin-400-italic.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'Noto Sans';
+    font-style: italic;
+    font-weight: 700;
+    src: url('/fonts/noto-sans-latin-700-italic.woff2') format('woff2');
+}
