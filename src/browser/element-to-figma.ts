@@ -5,6 +5,7 @@ import {
     prepareUrl,
     isElemType,
     ElemTypes,
+    getLayerName,
 } from './dom-utils';
 import { getRgb, parseUnits, parseBoxShadowValues, getOpacity } from '../utils';
 import { MetaLayerNode, SvgNode, WithMeta } from '../types';
@@ -70,6 +71,7 @@ export const elementToFigma = (
         return {
             type: 'SVG',
             ref: el,
+            name: getLayerName(el),
             // add FILL to SVG to get right color in figma
             svg: replaceSvgFill(svgEl.outerHTML, fill),
             x: Math.round(rect.left),
@@ -105,6 +107,7 @@ export const elementToFigma = (
     const rectNode = {
         type: 'FRAME',
         ref: el,
+        name: getLayerName(el),
         x: Math.round(rect.left),
         y: Math.round(rect.top),
         width: Math.round(rect.width),
