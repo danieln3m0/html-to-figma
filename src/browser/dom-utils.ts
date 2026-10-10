@@ -200,8 +200,7 @@ export function textNodesUnder(el: Element) {
     const walk = context.document.createTreeWalker(
         el,
         NodeFilter.SHOW_TEXT,
-        null,
-        false
+        null
     );
 
     while ((n = walk.nextNode())) {

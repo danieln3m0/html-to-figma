@@ -1,7 +1,14 @@
 <html>
+    <link rel="stylesheet" href="/fonts/fonts.css" />
     <style>
+        body { font-family: 'Noto Sans', sans-serif; }
+        button, input { font: inherit; }
         .button {
             padding: 10px;
+            /* explicit colors: default button chrome uses OS-dependent
+               system colors (ButtonFace differs between Windows/Linux) */
+            background-color: #eee;
+            border: 2px solid #767676;
         }
     </style>
     <body>

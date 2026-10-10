@@ -27,8 +27,7 @@ const mapDOM = (root: Element): LayerNode => {
     const walk = context.document.createTreeWalker(
         root,
         NodeFilter.SHOW_ALL,
-        null,
-        false
+        null
     );
     const refs = new Map<Element, MetaLayerNode[]>();
 
