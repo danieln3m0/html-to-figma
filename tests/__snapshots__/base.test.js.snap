@@ -12,7 +12,6 @@ exports[`Convert to figma button with padding 1`] = `
             "vertical": "MIN",
           },
           "data": {
-            "heightType": "fixed",
             "widthType": "shrink",
           },
           "fills": [
@@ -48,7 +47,6 @@ exports[`Convert to figma button with padding 1`] = `
         "vertical": "MIN",
       },
       "data": {
-        "heightType": "fixed",
         "widthType": "shrink",
       },
       "fills": [
@@ -87,10 +85,6 @@ exports[`Convert to figma button with padding 1`] = `
     "horizontal": "SCALE",
     "vertical": "MIN",
   },
-  "data": {
-    "heightType": "fixed",
-    "widthType": "fixed",
-  },
   "fills": [],
   "height": 46,
   "opacity": 1,
@@ -113,7 +107,6 @@ exports[`Convert to figma buttons with :before :after 1`] = `
             "vertical": "MIN",
           },
           "data": {
-            "heightType": "fixed",
             "widthType": "shrink",
           },
           "fills": [
@@ -152,9 +145,7 @@ exports[`Convert to figma buttons with :before :after 1`] = `
             "vertical": "MIN",
           },
           "data": {
-            "heightType": "fixed",
             "position": "absolute",
-            "widthType": "fixed",
           },
           "fills": [
             {
@@ -185,9 +176,7 @@ exports[`Convert to figma buttons with :before :after 1`] = `
             "vertical": "MIN",
           },
           "data": {
-            "heightType": "fixed",
             "position": "absolute",
-            "widthType": "fixed",
           },
           "fills": [],
           "height": 42,
@@ -205,7 +194,6 @@ exports[`Convert to figma buttons with :before :after 1`] = `
         "vertical": "MIN",
       },
       "data": {
-        "heightType": "fixed",
         "widthType": "shrink",
       },
       "fills": [],
@@ -225,7 +213,6 @@ exports[`Convert to figma buttons with :before :after 1`] = `
             "vertical": "MIN",
           },
           "data": {
-            "heightType": "fixed",
             "widthType": "shrink",
           },
           "fills": [
@@ -264,9 +251,7 @@ exports[`Convert to figma buttons with :before :after 1`] = `
             "vertical": "MIN",
           },
           "data": {
-            "heightType": "fixed",
             "position": "absolute",
-            "widthType": "fixed",
           },
           "fills": [
             {
@@ -297,9 +282,7 @@ exports[`Convert to figma buttons with :before :after 1`] = `
             "vertical": "MIN",
           },
           "data": {
-            "heightType": "fixed",
             "position": "absolute",
-            "widthType": "fixed",
           },
           "fills": [],
           "height": 42,
@@ -317,7 +300,6 @@ exports[`Convert to figma buttons with :before :after 1`] = `
         "vertical": "MIN",
       },
       "data": {
-        "heightType": "fixed",
         "widthType": "shrink",
       },
       "fills": [],
@@ -333,10 +315,6 @@ exports[`Convert to figma buttons with :before :after 1`] = `
   "constraints": {
     "horizontal": "SCALE",
     "vertical": "MIN",
-  },
-  "data": {
-    "heightType": "fixed",
-    "widthType": "fixed",
   },
   "fills": [],
   "height": 42,
@@ -412,7 +390,6 @@ exports[`Convert to figma input and placeholder 1`] = `
           "data": {
             "heightType": "fixed",
             "position": "absolute",
-            "widthType": "fixed",
           },
           "fills": [
             {
@@ -451,10 +428,6 @@ exports[`Convert to figma input and placeholder 1`] = `
       "constraints": {
         "horizontal": "SCALE",
         "vertical": "MIN",
-      },
-      "data": {
-        "heightType": "fixed",
-        "widthType": "fixed",
       },
       "fills": [],
       "height": 36,
@@ -525,7 +498,6 @@ exports[`Convert to figma input and placeholder 1`] = `
           "data": {
             "heightType": "fixed",
             "position": "absolute",
-            "widthType": "fixed",
           },
           "fills": [
             {
@@ -565,10 +537,6 @@ exports[`Convert to figma input and placeholder 1`] = `
         "horizontal": "SCALE",
         "vertical": "MIN",
       },
-      "data": {
-        "heightType": "fixed",
-        "widthType": "fixed",
-      },
       "fills": [],
       "height": 36,
       "opacity": 1,
@@ -582,10 +550,6 @@ exports[`Convert to figma input and placeholder 1`] = `
   "constraints": {
     "horizontal": "SCALE",
     "vertical": "MIN",
-  },
-  "data": {
-    "heightType": "fixed",
-    "widthType": "fixed",
   },
   "fills": [],
   "height": 82,
@@ -634,10 +598,6 @@ exports[`Convert to figma opacity 1`] = `
   "constraints": {
     "horizontal": "SCALE",
     "vertical": "MIN",
-  },
-  "data": {
-    "heightType": "fixed",
-    "widthType": "fixed",
   },
   "fills": [],
   "height": 100,
@@ -730,10 +690,6 @@ exports[`Convert to figma shadows 1`] = `
     "horizontal": "SCALE",
     "vertical": "MIN",
   },
-  "data": {
-    "heightType": "fixed",
-    "widthType": "fixed",
-  },
   "fills": [],
   "height": 100,
   "opacity": 1,
@@ -741,5 +697,125 @@ exports[`Convert to figma shadows 1`] = `
   "width": 784,
   "x": 8,
   "y": 50,
+}
+`;
+
+exports[`Convert to figma svg <use> is expanded without mutating the page 1`] = `
+{
+  "children": [
+    {
+      "constraints": {
+        "horizontal": "CENTER",
+        "vertical": "MIN",
+      },
+      "height": 48,
+      "svg": "<svg class="icon"fill="rgb(204, 0, 0)">>
+                <path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"></path>
+            </svg>",
+      "type": "SVG",
+      "width": 48,
+      "x": 10,
+      "y": 10,
+    },
+  ],
+  "clipsContent": false,
+  "constraints": {
+    "horizontal": "SCALE",
+    "vertical": "MIN",
+  },
+  "fills": [],
+  "height": 68,
+  "opacity": 1,
+  "type": "FRAME",
+  "width": 784,
+  "x": 8,
+  "y": 8,
+}
+`;
+
+exports[`Convert to figma zero height parent with visible overflow keeps its children 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "characters": "INSIDE",
+          "constraints": {
+            "horizontal": "SCALE",
+            "vertical": "MIN",
+          },
+          "data": {
+            "heightType": "fixed",
+            "widthType": "fixed",
+          },
+          "fills": [
+            {
+              "blendMode": "NORMAL",
+              "color": {
+                "b": 0,
+                "g": 0,
+                "r": 0,
+              },
+              "opacity": 1,
+              "type": "SOLID",
+              "visible": true,
+            },
+          ],
+          "fontFamily": ""Noto Sans", sans-serif",
+          "fontSize": 16,
+          "height": 22,
+          "lineHeight": {
+            "unit": "PIXELS",
+            "value": 19,
+          },
+          "type": "TEXT",
+          "width": 52,
+          "x": 0,
+          "y": 0,
+        },
+      ],
+      "clipsContent": false,
+      "constraints": {
+        "horizontal": "SCALE",
+        "vertical": "MIN",
+      },
+      "data": {
+        "heightType": "fixed",
+        "widthType": "fixed",
+      },
+      "fills": [
+        {
+          "color": {
+            "b": 0,
+            "g": 0,
+            "r": 0.8,
+          },
+          "opacity": 1,
+          "type": "SOLID",
+        },
+      ],
+      "height": 40,
+      "opacity": 1,
+      "type": "FRAME",
+      "width": 80,
+      "x": 0,
+      "y": 0,
+    },
+  ],
+  "clipsContent": false,
+  "constraints": {
+    "horizontal": "SCALE",
+    "vertical": "MIN",
+  },
+  "data": {
+    "heightType": "fixed",
+  },
+  "fills": [],
+  "height": 200,
+  "opacity": 1,
+  "type": "FRAME",
+  "width": 784,
+  "x": 8,
+  "y": 8,
 }
 `;

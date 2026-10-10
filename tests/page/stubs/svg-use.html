@@ -1,0 +1,25 @@
+<html>
+    <link rel="stylesheet" href="/fonts/fonts.css" />
+    <style>
+        body { font-family: 'Noto Sans', sans-serif; }
+        button, input { font: inherit; }
+        #container {
+            padding: 10px;
+        }
+        .icon {
+            width: 48px;
+            height: 48px;
+            fill: #cc0000;
+        }
+    </style>
+    <body>
+        <svg style="display: none">
+            <symbol id="icon-star" viewBox="0 0 24 24">
+                <path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/>
+            </symbol>
+        </svg>
+        <div id="container">
+            <svg class="icon"><use href="#icon-star"></use></svg>
+        </div>
+    </body>
+</html>

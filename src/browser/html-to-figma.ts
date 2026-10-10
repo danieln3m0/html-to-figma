@@ -30,18 +30,37 @@ const mapDOM = (root: Element): LayerNode => {
         null
     );
     const refs = new Map<Element, MetaLayerNode[]>();
+    const converted = new Set<Element>();
 
     let n: Node | null = walk.currentNode;
-    
+
     do {
-        if (!n.parentElement) continue;
-        const figmaEl = elementToFigma(n as Element);
+        const isRoot = n === root;
+        if (!isRoot && !n.parentElement) continue;
+
+        const figmaEl = elementToFigma(n as Element, undefined, isRoot);
 
         if (figmaEl) {
             addConstraintToLayer(figmaEl, n as HTMLElement);
 
-            const children = refs.get(n.parentElement) || [];
-            refs.set(n.parentElement, [...children, figmaEl]);
+            if (!isRoot) {
+                // hang children of skipped elements (hidden, zero-size) off
+                // the closest converted ancestor instead of losing them
+                let parent = n.parentElement!;
+                while (
+                    parent !== root &&
+                    !converted.has(parent) &&
+                    parent.parentElement
+                ) {
+                    parent = parent.parentElement;
+                }
+                const children = refs.get(parent) || [];
+                refs.set(parent, [...children, figmaEl]);
+            }
+
+            if (n.nodeType === Node.ELEMENT_NODE) {
+                converted.add(n as Element);
+            }
             elems.push(figmaEl as WithMeta<LayerNode>);
         }
     } while (n = walk.nextNode());
@@ -109,22 +128,6 @@ export function htmlToFigma(
 
     if (!el) {
         throw Error(`Element not found`);
-    }
-
-    // Process SVG <use> elements
-    for (const use of Array.from(
-        el.querySelectorAll('use')
-    ) as SVGUseElement[]) {
-        try {
-            const symbolSelector = use.href.baseVal;
-            const symbol: SVGSymbolElement | null =
-                context.document.querySelector(symbolSelector);
-            if (symbol) {
-                use.outerHTML = symbol.innerHTML;
-            }
-        } catch (err) {
-            console.warn('Error querying <use> tag href', err);
-        }
     }
 
     const data = mapDOM(el);

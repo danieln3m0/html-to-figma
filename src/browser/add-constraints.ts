@@ -35,16 +35,15 @@ export const addConstraintToLayer = (layer: MetaLayerNode, elem?: HTMLElement, p
     if (!el || !parent) return;
 
     const currentDisplay = el.style.display;
-    // TODO
-    // правильно посчитать фиксированную ширину и высоту
-    el.style.setProperty('display', 'none', '!important');
+    // hide the element so getComputedStyle returns the specified
+    // width/height (e.g. 'auto' or '100px') instead of the used pixel value
+    el.style.setProperty('display', 'none', 'important');
     let computed = getComputedStyle(el, pseudo);
     const hasFixedWidth =
         computed.width && computed.width.trim().endsWith('px');
     const hasFixedHeight =
         computed.height && computed.height.trim().endsWith('px');
     el.style.display = currentDisplay;
-    // TODO END 
     const parentStyle = getComputedStyle(parent);
     let hasAutoMarginLeft = computed.marginLeft === 'auto';
     let hasAutoMarginRight = computed.marginRight === 'auto';

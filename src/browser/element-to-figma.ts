@@ -15,7 +15,8 @@ import { addConstraintToLayer } from './add-constraints';
 
 export const elementToFigma = (
     el: Element,
-    pseudo?: string
+    pseudo?: string,
+    isRoot?: boolean
 ): MetaLayerNode | undefined => {
     if (el.nodeType === Node.TEXT_NODE) {
         return textToFigma(el);
@@ -44,11 +45,33 @@ export const elementToFigma = (
         const rect = el.getBoundingClientRect();
         const fill = computedStyle.fill;
 
+        // expand <use> references on a clone: Figma can't resolve them and
+        // the live DOM must not be mutated
+        let svgEl = el;
+        if (el.querySelector('use')) {
+            const clone = el.cloneNode(true) as Element;
+            for (const use of Array.from(
+                clone.querySelectorAll('use')
+            ) as SVGUseElement[]) {
+                try {
+                    const symbolSelector = use.href.baseVal;
+                    const symbol: SVGSymbolElement | null =
+                        context.document.querySelector(symbolSelector);
+                    if (symbol) {
+                        use.outerHTML = symbol.innerHTML;
+                    }
+                } catch (err) {
+                    console.warn('Error querying <use> tag href', err);
+                }
+            }
+            svgEl = clone;
+        }
+
         return {
             type: 'SVG',
             ref: el,
             // add FILL to SVG to get right color in figma
-            svg: replaceSvgFill(el.outerHTML, fill),
+            svg: replaceSvgFill(svgEl.outerHTML, fill),
             x: Math.round(rect.left),
             y: Math.round(rect.top),
             width: Math.round(rect.width),
@@ -58,7 +81,9 @@ export const elementToFigma = (
 
     const rect = getBoundingClientRect(el, pseudo);
 
-    if (rect.width < 1 || rect.height < 1) {
+    // the root must always produce a frame: children are positioned
+    // relative to it even when it has zero size
+    if (!isRoot && (rect.width < 1 || rect.height < 1)) {
         return;
     }
 

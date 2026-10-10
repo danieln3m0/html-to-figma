@@ -1,0 +1,28 @@
+<html>
+    <link rel="stylesheet" href="/fonts/fonts.css" />
+    <style>
+        body { font-family: 'Noto Sans', sans-serif; }
+        button, input { font: inherit; }
+        #container {
+            position: relative;
+            height: 200px;
+        }
+        /* common centering pattern: zero-height wrapper with visible overflow */
+        .zero-wrap {
+            height: 0;
+            overflow: visible;
+        }
+        .child {
+            width: 80px;
+            height: 40px;
+            background-color: #cc0000;
+        }
+    </style>
+    <body>
+        <div id="container">
+            <div class="zero-wrap">
+                <div class="child">INSIDE</div>
+            </div>
+        </div>
+    </body>
+</html>

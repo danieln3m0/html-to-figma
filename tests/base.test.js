@@ -31,4 +31,18 @@ describe('Convert to figma', () => {
     it('opacity', async () => {
         expect(await htmlToFigma('opacity')).toMatchSnapshot();
     });
+
+    it('zero height parent with visible overflow keeps its children', async () => {
+        expect(await htmlToFigma('zero-height-parent')).toMatchSnapshot();
+    });
+
+    it('svg <use> is expanded without mutating the page', async () => {
+        expect(await htmlToFigma('svg-use')).toMatchSnapshot();
+
+        // conversion must be read-only: the original <use> stays in the DOM
+        const useCount = await page.evaluate(
+            () => document.querySelectorAll('use').length
+        );
+        expect(useCount).toBe(1);
+    });
 });
