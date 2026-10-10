@@ -31,4 +31,8 @@ describe('Convert to figma', () => {
     it('opacity', async () => {
         expect(await htmlToFigma('opacity')).toMatchSnapshot();
     });
+
+    it('zero height parent with visible overflow keeps its children', async () => {
+        expect(await htmlToFigma('zero-height-parent')).toMatchSnapshot();
+    });
 });

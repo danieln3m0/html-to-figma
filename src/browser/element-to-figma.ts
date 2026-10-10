@@ -15,7 +15,8 @@ import { addConstraintToLayer } from './add-constraints';
 
 export const elementToFigma = (
     el: Element,
-    pseudo?: string
+    pseudo?: string,
+    isRoot?: boolean
 ): MetaLayerNode | undefined => {
     if (el.nodeType === Node.TEXT_NODE) {
         return textToFigma(el);
@@ -58,7 +59,9 @@ export const elementToFigma = (
 
     const rect = getBoundingClientRect(el, pseudo);
 
-    if (rect.width < 1 || rect.height < 1) {
+    // the root must always produce a frame: children are positioned
+    // relative to it even when it has zero size
+    if (!isRoot && (rect.width < 1 || rect.height < 1)) {
         return;
     }
 
