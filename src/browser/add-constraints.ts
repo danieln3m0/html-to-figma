@@ -1,5 +1,4 @@
-import { LayerNode, MetaLayerNode } from '../types';
-import { traverse } from '../utils';
+import { MetaLayerNode } from '../types';
 import { context } from './utils';
 
 function setData(node: any, key: string, value: string) {
@@ -145,11 +144,3 @@ export const addConstraintToLayer = (layer: MetaLayerNode, elem?: HTMLElement, p
                 : 'MIN',
     };
 };
-
-// export function addConstraints(layers: LayerNode[]) {
-//     layers.forEach((layer) => {
-//         traverse(layer, (child) => {
-//             addConstraintToLayer(child);
-//         });
-//     });
-// }

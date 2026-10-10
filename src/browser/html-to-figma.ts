@@ -127,15 +127,6 @@ export function htmlToFigma(
         }
     }
 
-    // const els = (Array.from(el.querySelectorAll('*')) as Element[]).reduce(
-    //     (memo, el) => {
-    //         memo.push(el);
-    //         memo.push(...getShadowEls(el));
-
-    //         return memo;
-    //     },
-    //     [] as Element[]
-    // );
     const data = mapDOM(el);
 
     return data ? data : [];

@@ -124,20 +124,6 @@ export const elementToFigma = (
             } as ImagePaint);
         }
     }
-    // if (isElemType(el, ElemTypes.SVG)) {
-    //     const url = `data:image/svg+xml,${encodeURIComponent(
-    //         el.outerHTML.replace(/\s+/g, ' ')
-    //     )}`;
-    //     if (url) {
-    //         fills.push({
-    //             url,
-    //             type: 'IMAGE',
-    //             // TODO: object fit, position
-    //             scaleMode: 'FILL',
-    //             imageHash: null,
-    //         } as ImagePaint);
-    //     }
-    // }
     if (isElemType(el, ElemTypes.Image)) {
         const url = (el as HTMLImageElement).src;
         if (url) {

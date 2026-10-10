@@ -12,7 +12,6 @@ const processDefaultElement = (
     node.y = layer.y as number;
     node.resize(layer.width || 1, layer.height || 1);
     assign(node, layer);
-    // rects.push(frame);
     return node;
 };
 

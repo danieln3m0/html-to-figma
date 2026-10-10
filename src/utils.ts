@@ -92,18 +92,14 @@ export const fastClone = (data: any) =>
     typeof data === 'symbol' ? null : JSON.parse(JSON.stringify(data));
 
 export const toNum = (v: string): number => {
-    // if (!/px$/.test(v) && v !== '0') return v;
     if (!/px$/.test(v) && v !== '0') return 0;
     const n = parseFloat(v);
-    // return !isNaN(n) ? n : v;
     return !isNaN(n) ? n : 0;
 };
 
 export const toPercent = (v: string): number => {
-    // if (!/px$/.test(v) && v !== '0') return v;
     if (!/%$/.test(v) && v !== '0') return 0;
     const n = parseInt(v);
-    // return !isNaN(n) ? n : v;
     return !isNaN(n) ? n / 100 : 0;
 };
 
@@ -119,8 +115,6 @@ export const parseUnits = (str?: string | null, relative?: number): null | Unit 
 
         value = relative * percent;
     }
-    // const match = str.match(/([\d\.]+)px/);
-    // const val = match && match[1];
     if (value) {
         return {
             unit: 'PIXELS',
