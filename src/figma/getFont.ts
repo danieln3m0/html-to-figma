@@ -8,18 +8,65 @@ export const defaultFont = { family: 'Roboto', style: 'Regular' };
 let cachedAvailableFonts: Font[] | null = null;
 
 const getAvailableFontNames = async () => {
-    if (cachedAvailableFonts) {
-        return cachedAvailableFonts;
-    } else {
-        return (await figma.listAvailableFontsAsync()).filter(
-            (font: Font) => font.fontName.style === 'Regular'
-        );
+    if (!cachedAvailableFonts) {
+        cachedAvailableFonts = await figma.listAvailableFontsAsync();
     }
-}
+    return cachedAvailableFonts;
+};
 
-// TODO: keep list of fonts not found
-export async function getMatchingFont(fontStr: string) {
-    const cached = fontCache[fontStr];
+const WEIGHT_STYLES: { [weight: number]: string[] } = {
+    100: ['Thin', 'Hairline'],
+    200: ['ExtraLight', 'UltraLight'],
+    300: ['Light'],
+    400: ['Regular', 'Normal', 'Book'],
+    500: ['Medium'],
+    600: ['SemiBold', 'DemiBold'],
+    700: ['Bold'],
+    800: ['ExtraBold', 'UltraBold'],
+    900: ['Black', 'Heavy'],
+};
+const WEIGHTS = [100, 200, 300, 400, 500, 600, 700, 800, 900];
+
+const pickStyle = (
+    familyFonts: Font[],
+    weight: number,
+    italic: boolean
+): FontName => {
+    const styles = familyFonts.map((font) => font.fontName);
+    const withItalic = styles.filter(
+        (name) => /italic|oblique/i.test(name.style) === italic
+    );
+    const candidates = withItalic.length ? withItalic : styles;
+
+    // "Bold Italic" -> "Bold", bare "Italic" -> "Regular"
+    const weightOf = (style: string) =>
+        style.replace(/\s*(italic|oblique)\s*/i, ' ').trim() || 'Regular';
+
+    // exact weight first, then closest
+    const byDistance = [...WEIGHTS].sort(
+        (a, b) => Math.abs(a - weight) - Math.abs(b - weight)
+    );
+
+    for (const w of byDistance) {
+        for (const styleName of WEIGHT_STYLES[w]) {
+            const found = candidates.find(
+                (name) =>
+                    normalizeName(weightOf(name.style)) ===
+                    normalizeName(styleName)
+            );
+            if (found) return found;
+        }
+    }
+    return candidates[0];
+};
+
+export async function getMatchingFont(
+    fontStr: string,
+    weight: number = 400,
+    italic: boolean = false
+) {
+    const cacheKey = `${fontStr}|${weight}|${italic}`;
+    const cached = fontCache[cacheKey];
     if (cached) {
         return cached;
     }
@@ -29,21 +76,15 @@ export async function getMatchingFont(fontStr: string) {
 
     for (const family of familySplit) {
         const normalized = normalizeName(family);
-        for (const availableFont of availableFonts) {
-            const normalizedAvailable = normalizeName(
-                availableFont.fontName.family
-            );
-            if (normalizedAvailable === normalized) {
-                const cached = fontCache[normalizedAvailable];
-                if (cached) {
-                    return cached;
-                }
-                await figma.loadFontAsync(availableFont.fontName);
-                fontCache[fontStr] = availableFont.fontName;
-                fontCache[normalizedAvailable] = availableFont.fontName;
-                return availableFont.fontName;
-            }
-        }
+        const familyFonts = availableFonts.filter(
+            (font) => normalizeName(font.fontName.family) === normalized
+        );
+        if (!familyFonts.length) continue;
+
+        const fontName = pickStyle(familyFonts, weight, italic);
+        await figma.loadFontAsync(fontName);
+        fontCache[cacheKey] = fontName;
+        return fontName;
     }
 
     return defaultFont;

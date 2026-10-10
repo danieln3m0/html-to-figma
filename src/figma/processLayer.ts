@@ -72,9 +72,15 @@ export const processLayer = async (
         const text = node as TextNode;
 
         if (layer.fontFamily) {
-            text.fontName = await getMatchingFont(layer.fontFamily);
+            text.fontName = await getMatchingFont(
+                layer.fontFamily,
+                layer.fontWeight,
+                layer.fontStyle === 'italic'
+            );
 
             delete layer.fontFamily;
+            delete layer.fontWeight;
+            delete layer.fontStyle;
         }
 
         assign(text, layer);

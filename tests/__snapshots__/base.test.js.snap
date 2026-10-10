@@ -733,6 +733,413 @@ exports[`Convert to figma svg <use> is expanded without mutating the page 1`] = 
 }
 `;
 
+exports[`Convert to figma text styles: weight, italics, decoration, alignment 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "characters": "Bold text",
+          "constraints": {
+            "horizontal": "SCALE",
+            "vertical": "MIN",
+          },
+          "fills": [
+            {
+              "blendMode": "NORMAL",
+              "color": {
+                "b": 0,
+                "g": 0,
+                "r": 0,
+              },
+              "opacity": 1,
+              "type": "SOLID",
+              "visible": true,
+            },
+          ],
+          "fontFamily": ""Noto Sans", sans-serif",
+          "fontSize": 16,
+          "fontWeight": 700,
+          "height": 22,
+          "lineHeight": {
+            "unit": "PIXELS",
+            "value": 19,
+          },
+          "type": "TEXT",
+          "width": 72,
+          "x": 0,
+          "y": 0,
+        },
+      ],
+      "clipsContent": false,
+      "constraints": {
+        "horizontal": "SCALE",
+        "vertical": "MIN",
+      },
+      "fills": [],
+      "height": 22,
+      "opacity": 1,
+      "type": "FRAME",
+      "width": 400,
+      "x": 8,
+      "y": 12,
+    },
+    {
+      "children": [
+        {
+          "characters": "Italic text",
+          "constraints": {
+            "horizontal": "SCALE",
+            "vertical": "MIN",
+          },
+          "fills": [
+            {
+              "blendMode": "NORMAL",
+              "color": {
+                "b": 0,
+                "g": 0,
+                "r": 0,
+              },
+              "opacity": 1,
+              "type": "SOLID",
+              "visible": true,
+            },
+          ],
+          "fontFamily": ""Noto Sans", sans-serif",
+          "fontSize": 16,
+          "fontStyle": "italic",
+          "height": 22,
+          "lineHeight": {
+            "unit": "PIXELS",
+            "value": 19,
+          },
+          "type": "TEXT",
+          "width": 66,
+          "x": 0,
+          "y": 0,
+        },
+      ],
+      "clipsContent": false,
+      "constraints": {
+        "horizontal": "SCALE",
+        "vertical": "MIN",
+      },
+      "fills": [],
+      "height": 22,
+      "opacity": 1,
+      "type": "FRAME",
+      "width": 400,
+      "x": 8,
+      "y": 38,
+    },
+    {
+      "children": [
+        {
+          "characters": "Bold italic text",
+          "constraints": {
+            "horizontal": "SCALE",
+            "vertical": "MIN",
+          },
+          "fills": [
+            {
+              "blendMode": "NORMAL",
+              "color": {
+                "b": 0,
+                "g": 0,
+                "r": 0,
+              },
+              "opacity": 1,
+              "type": "SOLID",
+              "visible": true,
+            },
+          ],
+          "fontFamily": ""Noto Sans", sans-serif",
+          "fontSize": 16,
+          "fontStyle": "italic",
+          "fontWeight": 700,
+          "height": 22,
+          "lineHeight": {
+            "unit": "PIXELS",
+            "value": 19,
+          },
+          "type": "TEXT",
+          "width": 111,
+          "x": 0,
+          "y": 0,
+        },
+      ],
+      "clipsContent": false,
+      "constraints": {
+        "horizontal": "SCALE",
+        "vertical": "MIN",
+      },
+      "fills": [],
+      "height": 22,
+      "opacity": 1,
+      "type": "FRAME",
+      "width": 400,
+      "x": 8,
+      "y": 64,
+    },
+    {
+      "children": [
+        {
+          "characters": "Underlined text",
+          "constraints": {
+            "horizontal": "SCALE",
+            "vertical": "MIN",
+          },
+          "fills": [
+            {
+              "blendMode": "NORMAL",
+              "color": {
+                "b": 0,
+                "g": 0,
+                "r": 0,
+              },
+              "opacity": 1,
+              "type": "SOLID",
+              "visible": true,
+            },
+          ],
+          "fontFamily": ""Noto Sans", sans-serif",
+          "fontSize": 16,
+          "height": 22,
+          "lineHeight": {
+            "unit": "PIXELS",
+            "value": 19,
+          },
+          "textDecoration": "UNDERLINE",
+          "type": "TEXT",
+          "width": 117,
+          "x": 0,
+          "y": 0,
+        },
+      ],
+      "clipsContent": false,
+      "constraints": {
+        "horizontal": "SCALE",
+        "vertical": "MIN",
+      },
+      "fills": [],
+      "height": 22,
+      "opacity": 1,
+      "type": "FRAME",
+      "width": 400,
+      "x": 8,
+      "y": 90,
+    },
+    {
+      "children": [
+        {
+          "characters": "Struck text",
+          "constraints": {
+            "horizontal": "SCALE",
+            "vertical": "MIN",
+          },
+          "fills": [
+            {
+              "blendMode": "NORMAL",
+              "color": {
+                "b": 0,
+                "g": 0,
+                "r": 0,
+              },
+              "opacity": 1,
+              "type": "SOLID",
+              "visible": true,
+            },
+          ],
+          "fontFamily": ""Noto Sans", sans-serif",
+          "fontSize": 16,
+          "height": 22,
+          "lineHeight": {
+            "unit": "PIXELS",
+            "value": 19,
+          },
+          "textDecoration": "STRIKETHROUGH",
+          "type": "TEXT",
+          "width": 80,
+          "x": 0,
+          "y": 0,
+        },
+      ],
+      "clipsContent": false,
+      "constraints": {
+        "horizontal": "SCALE",
+        "vertical": "MIN",
+      },
+      "fills": [],
+      "height": 22,
+      "opacity": 1,
+      "type": "FRAME",
+      "width": 400,
+      "x": 8,
+      "y": 116,
+    },
+    {
+      "children": [
+        {
+          "characters": "Justified text",
+          "constraints": {
+            "horizontal": "SCALE",
+            "vertical": "MIN",
+          },
+          "fills": [
+            {
+              "blendMode": "NORMAL",
+              "color": {
+                "b": 0,
+                "g": 0,
+                "r": 0,
+              },
+              "opacity": 1,
+              "type": "SOLID",
+              "visible": true,
+            },
+          ],
+          "fontFamily": ""Noto Sans", sans-serif",
+          "fontSize": 16,
+          "height": 22,
+          "lineHeight": {
+            "unit": "PIXELS",
+            "value": 19,
+          },
+          "textAlignHorizontal": "JUSTIFIED",
+          "type": "TEXT",
+          "width": 93,
+          "x": 0,
+          "y": 0,
+        },
+      ],
+      "clipsContent": false,
+      "constraints": {
+        "horizontal": "SCALE",
+        "vertical": "MIN",
+      },
+      "fills": [],
+      "height": 22,
+      "opacity": 1,
+      "type": "FRAME",
+      "width": 400,
+      "x": 8,
+      "y": 142,
+    },
+    {
+      "children": [
+        {
+          "characters": "RTL start aligned",
+          "constraints": {
+            "horizontal": "SCALE",
+            "vertical": "MIN",
+          },
+          "fills": [
+            {
+              "blendMode": "NORMAL",
+              "color": {
+                "b": 0,
+                "g": 0,
+                "r": 0,
+              },
+              "opacity": 1,
+              "type": "SOLID",
+              "visible": true,
+            },
+          ],
+          "fontFamily": ""Noto Sans", sans-serif",
+          "fontSize": 16,
+          "height": 22,
+          "lineHeight": {
+            "unit": "PIXELS",
+            "value": 19,
+          },
+          "textAlignHorizontal": "RIGHT",
+          "type": "TEXT",
+          "width": 126,
+          "x": 274,
+          "y": 0,
+        },
+      ],
+      "clipsContent": false,
+      "constraints": {
+        "horizontal": "SCALE",
+        "vertical": "MIN",
+      },
+      "fills": [],
+      "height": 22,
+      "opacity": 1,
+      "type": "FRAME",
+      "width": 400,
+      "x": 8,
+      "y": 168,
+    },
+    {
+      "children": [
+        {
+          "characters": "LTR end aligned",
+          "constraints": {
+            "horizontal": "SCALE",
+            "vertical": "MIN",
+          },
+          "fills": [
+            {
+              "blendMode": "NORMAL",
+              "color": {
+                "b": 0,
+                "g": 0,
+                "r": 0,
+              },
+              "opacity": 1,
+              "type": "SOLID",
+              "visible": true,
+            },
+          ],
+          "fontFamily": ""Noto Sans", sans-serif",
+          "fontSize": 16,
+          "height": 22,
+          "lineHeight": {
+            "unit": "PIXELS",
+            "value": 19,
+          },
+          "textAlignHorizontal": "RIGHT",
+          "type": "TEXT",
+          "width": 120,
+          "x": 280,
+          "y": 0,
+        },
+      ],
+      "clipsContent": false,
+      "constraints": {
+        "horizontal": "SCALE",
+        "vertical": "MIN",
+      },
+      "fills": [],
+      "height": 22,
+      "opacity": 1,
+      "type": "FRAME",
+      "width": 400,
+      "x": 8,
+      "y": 194,
+    },
+  ],
+  "clipsContent": false,
+  "constraints": {
+    "horizontal": "SCALE",
+    "vertical": "MIN",
+  },
+  "data": {
+    "widthType": "fixed",
+  },
+  "fills": [],
+  "height": 228,
+  "opacity": 1,
+  "type": "FRAME",
+  "width": 416,
+  "x": 8,
+  "y": 8,
+}
+`;
+
 exports[`Convert to figma zero height parent with visible overflow keeps its children 1`] = `
 {
   "children": [
