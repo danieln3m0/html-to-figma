@@ -204,7 +204,7 @@ export const elementToFigma = (
         }
         rectNode.effects = parsed.map((shadow) => ({
             color: shadow.color,
-            type: 'DROP_SHADOW',
+            type: shadow.inset ? 'INNER_SHADOW' : 'DROP_SHADOW',
             radius: shadow.blurRadius,
             spread: shadow.spreadRadius,
             blendMode: 'NORMAL',

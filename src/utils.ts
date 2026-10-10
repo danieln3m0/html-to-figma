@@ -69,24 +69,50 @@ interface ParsedColor {
     a: number;
 }
 
+const parseAlpha = (a?: string, percent?: string) =>
+    a ? parseFloat(a) / (percent ? 100 : 1) : 1;
+
 export function getRgb(colorString?: string | null): ParsedColor | null {
     if (!colorString) {
         return null;
     }
-    const [_1, r, g, b, _2, a] = (colorString!.match(
-        /rgba?\(([\d\.]+), ([\d\.]+), ([\d\.]+)(, ([\d\.]+))?\)/
-    )! || []) as string[];
 
-    const none = a && parseFloat(a) === 0;
+    // legacy comma syntax rgb(0, 0, 0) / rgba(0, 0, 0, .5)
+    // and modern space syntax rgb(0 0 0 / 50%)
+    const rgbMatch = colorString.match(
+        /rgba?\(\s*([\d.]+)[,\s]+([\d.]+)[,\s]+([\d.]+)\s*(?:[,/]\s*([\d.]+)(%)?)?\s*\)/
+    );
+    if (rgbMatch) {
+        const [, r, g, b, a, aPercent] = rgbMatch;
+        const alpha = parseAlpha(a, aPercent);
+        if (alpha === 0) return null;
 
-    if (r && g && b && !none) {
         return {
-            r: parseInt(r) / 255,
-            g: parseInt(g) / 255,
-            b: parseInt(b) / 255,
-            a: a ? parseFloat(a) : 1,
+            r: parseFloat(r) / 255,
+            g: parseFloat(g) / 255,
+            b: parseFloat(b) / 255,
+            a: alpha,
         };
     }
+
+    // color(srgb r g b / a) with channels in 0..1
+    // (oklch()/lab() are not supported and return null)
+    const srgbMatch = colorString.match(
+        /color\(\s*srgb\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)\s*(?:\/\s*([\d.]+)(%)?)?\s*\)/
+    );
+    if (srgbMatch) {
+        const [, r, g, b, a, aPercent] = srgbMatch;
+        const alpha = parseAlpha(a, aPercent);
+        if (alpha === 0) return null;
+
+        return {
+            r: parseFloat(r),
+            g: parseFloat(g),
+            b: parseFloat(b),
+            a: alpha,
+        };
+    }
+
     return null;
 }
 

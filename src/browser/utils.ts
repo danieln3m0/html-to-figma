@@ -22,9 +22,17 @@ export const setContext = (window: Window) => {
 
 export const replaceSvgFill = (svg: string, fillColor: string) => {
     const endTagIndex = svg.indexOf('>');
-    const mainTag = svg.slice(1, endTagIndex);
-    const fillAttr = `fill="${fillColor}"`;
-    const mainTagWithFill = mainTag.includes('fill=') ? mainTag.replace(/fill\=(.*?)\s/, `fill="${fillColor}" `) : mainTag + fillAttr;
+    if (endTagIndex === -1) {
+        return svg;
+    }
 
-    return `<${mainTagWithFill}>${svg.slice(endTagIndex)}`;
+    let mainTag = svg.slice(1, endTagIndex);
+
+    if (/fill=(['"]).*?\1/.test(mainTag)) {
+        mainTag = mainTag.replace(/fill=(['"]).*?\1/, `fill="${fillColor}"`);
+    } else {
+        mainTag = `${mainTag} fill="${fillColor}"`;
+    }
+
+    return `<${mainTag}>${svg.slice(endTagIndex + 1)}`;
 }
