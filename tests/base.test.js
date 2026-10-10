@@ -44,6 +44,32 @@ describe('Convert to figma', () => {
         expect(await htmlToFigma('text-styles')).toMatchSnapshot();
     });
 
+    it('options: exclude and nameLayer', async () => {
+        await page.goto(`http://localhost:3000/stubs/options.html`);
+        await page.addScriptTag({ url: '../index.js' });
+        await page.evaluate(() => document.fonts.ready);
+
+        // callbacks run in the page context (they cannot be serialized
+        // from the test), so they are defined inside the pageFunction
+        const result = await page.$eval('#container', (el) =>
+            window.__htmlToFigma(el, {
+                exclude: (node) => node.classList.contains('skip'),
+                nameLayer: (node) => node.dataset.layer,
+            })
+        );
+
+        expect(result).toMatchSnapshot();
+        const json = JSON.stringify(result);
+        expect(json).not.toContain('EXCLUDED');
+        expect(json).toContain('CustomName');
+
+        // exclude also accepts a CSS selector string
+        const withSelector = await page.$eval('#container', (el) =>
+            window.__htmlToFigma(el, { exclude: '.skip' })
+        );
+        expect(JSON.stringify(withSelector)).not.toContain('EXCLUDED');
+    });
+
     it('svg <use> is expanded without mutating the page', async () => {
         expect(await htmlToFigma('svg-use')).toMatchSnapshot();
 

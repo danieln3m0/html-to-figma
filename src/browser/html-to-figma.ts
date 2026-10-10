@@ -22,7 +22,20 @@ const removeMeta = (layerWithMeta: WithMeta<LayerNode>): LayerNode | undefined =
     return { type, ...rest } as PlainLayerNode;
 }
 
-const mapDOM = (root: Element): LayerNode => {
+export interface HtmlToFigmaOptions {
+    /**
+     * CSS selector or callback; matching elements and their whole subtrees
+     * are skipped. The selected root is never excluded.
+     */
+    exclude?: string | ((el: Element) => boolean);
+    /**
+     * Override the default tag#id.classes layer name. Return undefined to
+     * keep the default for that element.
+     */
+    nameLayer?: (el: Element) => string | void;
+}
+
+const mapDOM = (root: Element, options: HtmlToFigmaOptions = {}): LayerNode => {
     const elems: WithMeta<LayerNode>[] = [];
     const walk = context.document.createTreeWalker(
         root,
@@ -31,6 +44,11 @@ const mapDOM = (root: Element): LayerNode => {
     );
     const refs = new Map<Element, MetaLayerNode[]>();
     const converted = new Set<Element>();
+    const excludedSubtrees = new Set<Element>();
+
+    const { exclude } = options;
+    const isExcluded = (el: Element): boolean =>
+        typeof exclude === 'string' ? el.matches(exclude) : !!exclude?.(el);
 
     let n: Node | null = walk.currentNode;
 
@@ -38,7 +56,24 @@ const mapDOM = (root: Element): LayerNode => {
         const isRoot = n === root;
         if (!isRoot && !n.parentElement) continue;
 
-        const figmaEl = elementToFigma(n as Element, undefined, isRoot);
+        const parentExcluded =
+            !!n.parentElement && excludedSubtrees.has(n.parentElement);
+
+        if (!isRoot && n.nodeType === Node.ELEMENT_NODE) {
+            // excluding prunes the subtree: children must not be rescued by
+            // the closest-converted-ancestor logic below
+            if (parentExcluded || (exclude && isExcluded(n as Element))) {
+                excludedSubtrees.add(n as Element);
+                continue;
+            }
+        } else if (parentExcluded) {
+            continue;
+        }
+
+        const figmaEl = elementToFigma(n as Element, undefined, {
+            isRoot,
+            nameLayer: options.nameLayer,
+        });
 
         if (figmaEl) {
             addConstraintToLayer(figmaEl, n as HTMLElement);
@@ -118,6 +153,7 @@ const mapDOM = (root: Element): LayerNode => {
 
 export function htmlToFigma(
     selector: HTMLElement | string = 'body',
+    options: HtmlToFigmaOptions = {},
 ) {
 
     let layers: LayerNode[] = [];
@@ -130,7 +166,7 @@ export function htmlToFigma(
         throw Error(`Element not found`);
     }
 
-    const data = mapDOM(el);
+    const data = mapDOM(el, options);
 
     return data ? data : [];
 }

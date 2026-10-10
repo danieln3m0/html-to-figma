@@ -5,6 +5,13 @@ const normalizeName = (str: string) =>
 
 export const defaultFont = { family: 'Roboto', style: 'Regular' };
 
+let currentDefaultFont: FontName = defaultFont;
+
+/** Fallback font used when no family matches (default: Roboto Regular). */
+export const setDefaultFont = (font: FontName) => {
+    currentDefaultFont = font;
+};
+
 let cachedAvailableFonts: Font[] | null = null;
 
 const getAvailableFontNames = async () => {
@@ -87,5 +94,5 @@ export async function getMatchingFont(
         return fontName;
     }
 
-    return defaultFont;
+    return currentDefaultFont;
 }

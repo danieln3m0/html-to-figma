@@ -1,0 +1,25 @@
+<html>
+    <link rel="stylesheet" href="/fonts/fonts.css" />
+    <style>
+        body { font-family: 'Noto Sans', sans-serif; }
+        button, input { font: inherit; }
+        #container {
+            padding: 8px;
+        }
+        .box {
+            width: 120px;
+            height: 40px;
+            background-color: #dddddd;
+            margin: 4px;
+        }
+    </style>
+    <body>
+        <div id="container">
+            <div class="box" data-layer="CustomName">KEPT</div>
+            <div class="box skip">EXCLUDED
+                <span>EXCLUDED CHILD</span>
+            </div>
+            <div class="box">PLAIN</div>
+        </div>
+    </body>
+</html>
