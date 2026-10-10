@@ -398,6 +398,24 @@ export const isElemType = (el: Element, type: ElemTypes): boolean => {
     return getElemType(el) === type;
 }
 
+const MAX_LAYER_NAME_LENGTH = 60;
+
+// CSS-selector-like layer name (div#header.nav.open) so the Figma layer
+// tree is navigable instead of a wall of "Frame"
+export const getLayerName = (el: Element): string => {
+    const tag = el.tagName.toLowerCase();
+    const id = el.id ? `#${el.id}` : '';
+    const classes = Array.from(el.classList)
+        .slice(0, 3)
+        .map((cls) => `.${cls}`)
+        .join('');
+
+    const name = `${tag}${id}${classes}`;
+    return name.length > MAX_LAYER_NAME_LENGTH
+        ? name.slice(0, MAX_LAYER_NAME_LENGTH - 1) + '…'
+        : name;
+};
+
 export const getLineHeight = (el: HTMLElement, computedStyles: CSSStyleDeclaration): Unit | null => {
     const computedLineHeight = parseUnits(computedStyles.lineHeight);
 
